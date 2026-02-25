@@ -113,13 +113,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Инициализация
     setLanguage('ru');
     setTheme('dark');
-
-    // Адаптивность для мобильных устройств
-    function handleMobileLayout() {
-        const isMobile = window.innerWidth <= 768;
-        // Здесь можно добавить дополнительную логику для мобильных устройств, если потребуется
-    }
-
-    window.addEventListener('resize', handleMobileLayout);
-    handleMobileLayout();
 });
