@@ -57,7 +57,7 @@ body.light-theme .theme-toggle::after {
     right: auto;
 }
 
-/* Фиксированный контейнер */
+/* Контейнер страницы */
 .page {
     position: relative;
     width: 1440px;
@@ -73,6 +73,7 @@ body.light-theme .theme-toggle::after {
     transform: translateX(-50%);
     width: 143px;
     height: 130px;
+    z-index: 10;
 }
 
 /* Блок кнопок */
@@ -83,6 +84,7 @@ body.light-theme .theme-toggle::after {
     display: flex;
     align-items: center;
     gap: 15px;
+    z-index: 10;
 }
 
 .lang-switch {
@@ -134,6 +136,7 @@ body.light-theme .theme-toggle::after {
     font-size: 70px;
     text-align: center;
     white-space: nowrap;
+    z-index: 5;
 }
 
 /* Пояснительный текст */
@@ -148,6 +151,7 @@ body.light-theme .theme-toggle::after {
     line-height: 26px;
     text-align: center;
     margin: 0;
+    z-index: 5;
 }
 
 /* Список контактов */
@@ -158,6 +162,7 @@ body.light-theme .theme-toggle::after {
     width: 293px;
     display: flex;
     flex-direction: column;
+    z-index: 5;
 }
 
 /* Каждая строка */
@@ -177,54 +182,213 @@ body.light-theme .theme-toggle::after {
     flex-shrink: 0;
 }
 
-/* Контейнер текста (общий) */
+/* Контейнер текста */
 .contact-text {
     display: flex;
     align-items: baseline;
     font-size: 16px;
-    white-space: nowrap; /* Запрещаем перенос для всех строк */
-}
-
-/* Специально для телефона (дублируем, но можно и без него) */
-.contact-text.phone {
     white-space: nowrap;
 }
 
-/* Имя (Анастасия) */
+/* Имя */
 .contact-name {
     font-weight: 900;
     font-size: 24px;
     white-space: nowrap;
 }
 
-/* Метка (обычный текст) */
+/* Метка */
 .label {
     font-weight: 400;
     font-size: 16px;
 }
 
-/* Данные (bold) */
+/* Данные */
 .data {
     font-weight: 700;
     font-size: 16px;
     margin-left: 5px;
 }
 
-/* Для телефона убираем отступ у data */
+/* Для телефона */
 .phone .data {
     margin-left: 0;
 }
 
-/* Добавляем пробел после метки телефона через псевдоэлемент */
 .phone .label::after {
     content: ' ';
     white-space: pre;
 }
 
-/* Адаптивность */
-@media (max-width: 1440px) {
+/* ========== АДАПТИВНОСТЬ ========== */
+
+/* Для планшетов и маленьких ноутбуков */
+@media screen and (max-width: 1440px) {
     .page {
         width: 100%;
-        overflow-x: auto;
+        overflow-x: hidden;
+    }
+}
+
+/* Для планшетов (горизонтальная ориентация) */
+@media screen and (max-width: 1024px) {
+    .greeting {
+        font-size: 60px;
+        top: 250px;
+    }
+    
+    .message {
+        top: 360px;
+        width: 380px;
+        font-size: 18px;
+        line-height: 24px;
+    }
+    
+    .contacts {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 320px;
+        top: 470px;
+    }
+}
+
+/* Для планшетов (вертикальная ориентация) */
+@media screen and (max-width: 768px) {
+    .greeting {
+        font-size: 48px;
+        top: 220px;
+        white-space: normal;
+        width: 90%;
+    }
+    
+    .message {
+        top: 320px;
+        width: 90%;
+        max-width: 421px;
+        font-size: 18px;
+    }
+    
+    .contacts {
+        top: 430px;
+        width: 280px;
+    }
+    
+    .logo {
+        width: 120px;
+        height: auto;
+        top: 40px;
+    }
+    
+    .top-right {
+        top: 15px;
+        right: 15px;
+        gap: 10px;
+    }
+    
+    .lang-btn {
+        font-size: 18px;
+    }
+}
+
+/* Для больших телефонов */
+@media screen and (max-width: 480px) {
+    .greeting {
+        font-size: 36px;
+        top: 190px;
+    }
+    
+    .message {
+        top: 270px;
+        font-size: 16px;
+        line-height: 22px;
+        width: 90%;
+    }
+    
+    .contacts {
+        top: 370px;
+        width: 260px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .contact-link {
+        height: 50px;
+    }
+    
+    .contact-name {
+        font-size: 20px;
+    }
+    
+    .contact-text {
+        font-size: 14px;
+    }
+    
+    .label, .data {
+        font-size: 14px;
+    }
+    
+    .logo {
+        width: 100px;
+        height: auto;
+        top: 30px;
+    }
+    
+    .top-right {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .lang-btn {
+        font-size: 16px;
+    }
+}
+
+/* Для маленьких телефонов */
+@media screen and (max-width: 360px) {
+    .greeting {
+        font-size: 28px;
+        top: 170px;
+    }
+    
+    .message {
+        top: 240px;
+        font-size: 14px;
+        line-height: 20px;
+    }
+    
+    .contacts {
+        top: 320px;
+        width: 230px;
+    }
+    
+    .contact-link img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .contact-name {
+        font-size: 18px;
+    }
+    
+    .contact-text {
+        font-size: 12px;
+    }
+    
+    .label, .data {
+        font-size: 12px;
+    }
+    
+    .logo {
+        width: 80px;
+        height: auto;
+        top: 25px;
+    }
+    
+    .top-right {
+        gap: 8px;
+    }
+    
+    .lang-btn {
+        font-size: 14px;
     }
 }
