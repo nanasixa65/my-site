@@ -1,24 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Элементы для перевода
-    const greetingEl = document.getElementById('greeting');
-    const messageEl = document.getElementById('message');
-    const contactNameEl = document.getElementById('contactName');
-    const labelEmailEl = document.getElementById('labelEmail');
-    const labelTgEl = document.getElementById('labelTg');
-    const labelPhoneEl = document.getElementById('labelPhone');
+    // Элементы
+    const elements = {
+        greeting: document.getElementById('greeting'),
+        message: document.getElementById('message'),
+        contactName: document.getElementById('contactName'),
+        labelEmail: document.getElementById('labelEmail'),
+        labelTg: document.getElementById('labelTg'),
+        labelPhone: document.getElementById('labelPhone'),
+        logo: document.getElementById('logo'),
+        iconPersona: document.getElementById('iconPersona'),
+        iconEmail: document.getElementById('iconEmail'),
+        iconTg: document.getElementById('iconTg'),
+        iconTel: document.getElementById('iconTel'),
+        themeToggle: document.getElementById('themeToggle')
+    };
 
-    // Элементы для смены иконок (тема)
-    const logo = document.getElementById('logo');
-    const iconPersona = document.getElementById('iconPersona');
-    const iconEmail = document.getElementById('iconEmail');
-    const iconTg = document.getElementById('iconTg');
-    const iconTel = document.getElementById('iconTel');
+    // Проверка элементов
+    for (let [key, el] of Object.entries(elements)) {
+        if (!el) console.error(`Элемент с id "${key}" не найден!`);
+    }
 
-    // Кнопки
+    // Кнопки языка
     const langBtns = document.querySelectorAll('.lang-btn');
-    const themeToggle = document.getElementById('themeToggle');
 
-    // Объект с переводами
+    // Переводы
     const translations = {
         ru: {
             greeting: 'Приветствую!',
@@ -56,37 +61,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Текущие язык и тема
+    // Текущее состояние
     let currentLang = 'ru';
-    let currentTheme = 'dark'; // dark или light
+    let currentTheme = 'dark';
 
     // Функция установки языка
     function setLanguage(lang) {
         if (!translations[lang]) return;
         const t = translations[lang];
-        greetingEl.textContent = t.greeting;
-        messageEl.textContent = t.message;
-        contactNameEl.textContent = t.contactName;
-        labelEmailEl.textContent = t.labelEmail;
-        labelTgEl.textContent = t.labelTg;
-        labelPhoneEl.textContent = t.labelPhone;
+        if (elements.greeting) elements.greeting.textContent = t.greeting;
+        if (elements.message) elements.message.textContent = t.message;
+        if (elements.contactName) elements.contactName.textContent = t.contactName;
+        if (elements.labelEmail) elements.labelEmail.textContent = t.labelEmail;
+        if (elements.labelTg) elements.labelTg.textContent = t.labelTg;
+        if (elements.labelPhone) elements.labelPhone.textContent = t.labelPhone;
         currentLang = lang;
     }
 
     // Функция установки темы
     function setTheme(theme) {
         const body = document.body;
-        // Удаляем старый класс темы
         body.classList.remove('dark-theme', 'light-theme');
         body.classList.add(theme + '-theme');
 
-        // Меняем src изображений
         const assets = themeAssets[theme];
-        logo.src = assets.logo;
-        iconPersona.src = assets.persona;
-        iconEmail.src = assets.email;
-        iconTg.src = assets.tg;
-        iconTel.src = assets.tel;
+        if (elements.logo) elements.logo.src = assets.logo;
+        if (elements.iconPersona) elements.iconPersona.src = assets.persona;
+        if (elements.iconEmail) elements.iconEmail.src = assets.email;
+        if (elements.iconTg) elements.iconTg.src = assets.tg;
+        if (elements.iconTel) elements.iconTel.src = assets.tel;
 
         currentTheme = theme;
     }
@@ -94,18 +97,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // Обработчики кнопок языка
     langBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const lang = e.target.dataset.lang;
+            const lang = e.currentTarget.dataset.lang;
             setLanguage(lang);
         });
     });
 
     // Обработчик переключения темы
-    themeToggle.addEventListener('click', () => {
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme);
-    });
+    if (elements.themeToggle) {
+        elements.themeToggle.addEventListener('click', () => {
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+    }
 
-    // Инициализация (по умолчанию тёмная тема, русский язык)
+    // Инициализация
     setLanguage('ru');
     setTheme('dark');
+
+    // Адаптивность для мобильных устройств
+    function handleMobileLayout() {
+        const isMobile = window.innerWidth <= 768;
+        // Здесь можно добавить дополнительную логику для мобильных устройств, если потребуется
+    }
+
+    window.addEventListener('resize', handleMobileLayout);
+    handleMobileLayout();
 });
