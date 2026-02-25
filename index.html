@@ -32,8 +32,8 @@
 
         <!-- Контакты -->
         <div class="contacts">
-            <!-- Анастасия -->
-            <a href="tel:+79621081753" class="contact-link">
+            <!-- Анастасия (теперь добавляет контакт) -->
+            <a href="#" class="contact-link" id="addContactLink">
                 <img src="img/persona_white.png" alt="Иконка пользователя" class="contact-icon" id="iconPersona">
                 <span class="contact-name" id="contactName">Анастасия</span>
             </a>
@@ -47,7 +47,7 @@
                 </span>
             </a>
 
-            <!-- Telegram -->
+            <!-- Telegram (с поддержкой универсальной ссылки) -->
             <a href="https://t.me/Nanasixa" class="contact-link" target="_blank" rel="noopener noreferrer">
                 <img src="img/tg_white.png" alt="Иконка Telegram" class="contact-icon" id="iconTg">
                 <span class="contact-text">
@@ -66,8 +66,19 @@
             </a>
         </div>
 
+        <!-- Модальное окно для QR-кодов -->
+        <div class="modal" id="qrModal">
+            <div class="modal-content">
+                <span class="close-modal" id="closeModal">&times;</span>
+                <h3 id="qrTitle">QR-код</h3>
+                <div id="qrContainer"></div>
+                <p id="qrSubtext">Отсканируйте камерой телефона</p>
+            </div>
+        </div>
+
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
