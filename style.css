@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Темная тема (по умолчанию) */
+body.dark-theme {
+    background-color: #C12E2F;
+}
+
+body.dark-theme .greeting,
+body.dark-theme .message,
+body.dark-theme .contact-link,
+body.dark-theme .lang-btn {
+    color: #ffffff;
+}
+
+body.dark-theme .theme-toggle {
+    background-color: #ffffff;
+}
+
+body.dark-theme .theme-toggle::after {
+    background-color: #C12E2F;
+    right: 2px;
+    left: auto;
+}
+
+/* Светлая тема */
+body.light-theme {
+    background-color: #ffffff;
+}
+
+body.light-theme .greeting,
+body.light-theme .message,
+body.light-theme .contact-link,
+body.light-theme .lang-btn {
+    color: #000000;
+}
+
+body.light-theme .theme-toggle {
+    background-color: #E8E8E8;
+}
+
+body.light-theme .theme-toggle::after {
+    background-color: #A3A3A3;
+    left: 2px;
+    right: auto;
+}
+
+/* Фиксированный контейнер */
+.page {
+    position: relative;
+    width: 1440px;
+    min-height: 900px;
+    margin: 0 auto;
+}
+
+/* Логотип */
+.logo {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 143px;
+    height: 130px;
+}
+
+/* Блок кнопок */
+.top-right {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.lang-switch {
+    display: flex;
+    gap: 10px;
+}
+
+.lang-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+    text-transform: uppercase;
+    background: none;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+}
+
+/* Переключатель темы */
+.theme-toggle {
+    width: 34px;
+    height: 18px;
+    border: none;
+    border-radius: 18px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+.theme-toggle::after {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    transition: left 0.3s, right 0.3s, background-color 0.3s;
+}
+
+/* Заголовок */
+.greeting {
+    position: absolute;
+    top: 270px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 900;
+    font-size: 70px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Пояснительный текст */
+.message {
+    position: absolute;
+    top: 395px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 421px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    text-align: center;
+    margin: 0;
+}
+
+/* Список контактов */
+.contacts {
+    position: absolute;
+    top: 484px;
+    left: 531px;
+    width: 293px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Каждая строка */
+.contact-link {
+    display: flex;
+    align-items: center;
+    height: 57px;
+    text-decoration: none;
+    gap: 10px;
+}
+
+/* Иконки */
+.contact-link img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* Контейнер текста (общий) */
+.contact-text {
+    display: flex;
+    align-items: baseline;
+    font-size: 16px;
+    white-space: nowrap; /* Запрещаем перенос для всех строк */
+}
+
+/* Специально для телефона (дублируем, но можно и без него) */
+.contact-text.phone {
+    white-space: nowrap;
+}
+
+/* Имя (Анастасия) */
+.contact-name {
+    font-weight: 900;
+    font-size: 24px;
+    white-space: nowrap;
+}
+
+/* Метка (обычный текст) */
+.label {
+    font-weight: 400;
+    font-size: 16px;
+}
+
+/* Данные (bold) */
+.data {
+    font-weight: 700;
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+/* Для телефона убираем отступ у data */
+.phone .data {
+    margin-left: 0;
+}
+
+/* Добавляем пробел после метки телефона через псевдоэлемент */
+.phone .label::after {
+    content: ' ';
+    white-space: pre;
+}
+
+/* Адаптивность */
+@media (max-width: 1440px) {
+    .page {
+        width: 100%;
+        overflow-x: auto;
+    }
+}

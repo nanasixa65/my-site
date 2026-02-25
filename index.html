@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анастасия — дизайнер</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <div class="page">
+
+        <!-- Логотип -->
+        <img src="img/logo_white.png" alt="Логотип" class="logo" id="logo">
+
+        <!-- Кнопки сверху справа -->
+        <div class="top-right">
+            <div class="lang-switch">
+                <button class="lang-btn" data-lang="ru">RU</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему"></button>
+        </div>
+
+        <!-- Заголовок -->
+        <h1 class="greeting" id="greeting">Приветствую!</h1>
+
+        <!-- Пояснительный текст -->
+        <p class="message" id="message">Мой сайт находится еще в разработке, но вы можете связаться со мной:</p>
+
+        <!-- Контакты -->
+        <div class="contacts">
+            <!-- Анастасия -->
+            <a href="tel:+79621081753" class="contact-link">
+                <img src="img/persona_white.png" alt="Иконка пользователя" class="contact-icon" id="iconPersona">
+                <span class="contact-name" id="contactName">Анастасия</span>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:naspain@yandex.ru" class="contact-link">
+                <img src="img/email_white.png" alt="Иконка email" class="contact-icon" id="iconEmail">
+                <span class="contact-text">
+                    <span class="label" id="labelEmail">по e-mail:</span>
+                    <span class="data">naspain@yandex.ru</span>
+                </span>
+            </a>
+
+            <!-- Telegram -->
+            <a href="https://t.me/Nanasixa" class="contact-link" target="_blank" rel="noopener noreferrer">
+                <img src="img/tg_white.png" alt="Иконка Telegram" class="contact-icon" id="iconTg">
+                <span class="contact-text">
+                    <span class="label" id="labelTg">в Telegram:</span>
+                    <span class="data">@Nanasixa</span>
+                </span>
+            </a>
+
+            <!-- Телефон (с особым классом для nowrap) -->
+            <a href="tel:+79621081753" class="contact-link">
+                <img src="img/tel_white.png" alt="Иконка телефона" class="contact-icon" id="iconTel">
+                <span class="contact-text phone" id="phoneText">
+                    <span class="label" id="labelPhone">по номеру телефона</span>
+                    <span class="data">8 962 108 1753</span>
+                </span>
+            </a>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
